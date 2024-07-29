@@ -100,10 +100,11 @@
   -webkit-background-clip: text;
   background-clip: text;
 }
-/* 
+
 .card_header {
-  margin-bottom: auto;
-} */
+  display: flex;
+  flex-direction: column;
+}
 
 .office_names {
   color: rgb(207, 207, 207);

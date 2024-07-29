@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../Assets/tcblogo.jpg";
 import Style from "../Stylesheets/Navbar.module.css";
-import { Link, NavLink } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import Ham from "./Ham";
 
@@ -9,7 +9,7 @@ const NavBar = () => {
   const breakPoint = 1000;
 
   return (
-    <header>
+    <header className={Style.header}>
       <div className={Style.headContent}>
         <div className={Style.logoCont}>
           <div className={Style.logo}>
