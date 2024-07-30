@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../Assets/tcblogo.jpg";
 import Style from "../Stylesheets/Navbar.module.css";
-import {NavLink } from "react-router-dom";
+import {Link, NavLink } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import Ham from "./Ham";
 
@@ -14,7 +14,7 @@ const NavBar = () => {
         <div className={Style.logoCont}>
           <div className={Style.logo}>
             <img src={logo} alt="tcblogo" />
-            <span className={Style.img_text}> TheCodeBreakers </span>
+            <Link className={Style.img_text} to={"/"}> TheCodeBreakers </Link>
           </div>
         </div>
 
