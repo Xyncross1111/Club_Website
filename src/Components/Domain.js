@@ -8,7 +8,7 @@ const Domain = ({ domain = {
   discord: "",
   tags: [],
   bgColorStyle: {
-    background: "linear-gradient(135deg, #1f005c, #35005e, #5f0060, #8f0860, #bc365d, #dd635c, #f28c5f, #fcaa67, #ffb56b)"
+    background: "background: linear-gradient(135deg, #004d40, #00695c, #00796b, #00897b, #009688, #26a69a, #4db6ac, #80cbc4, #b2dfdb)"
   },
   members: []
 }

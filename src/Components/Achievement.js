@@ -49,14 +49,14 @@ let AchievementsCard = AchievementsList.map((obj) => {
     <div className={Style.AchievementsCard}>
       <div className={Style.leftOfAchievementCard}>
         {/* <img src="hh" alt={"Image of " + obj.aname}></img> */}
-        <h2>{obj.category.tag}</h2>
+        <h2 className={Style.tag}>{obj.category.tag}</h2>
         <h2 className={Style.date}>{obj.date}</h2>
       </div>
       <div className={Style.rightOfAchievementCard}>
         {/* <h4>{obj.date}</h4> */}
         <div className={Style.details}>
-          <h1>{obj.name}</h1>
-          <p>{obj.description}</p>
+          <h1 className={Style.name}>{obj.name}</h1>
+          <p className={Style.description}>{obj.description}</p>
         </div>
       </div>
     </div>
@@ -66,7 +66,27 @@ const AchievementsCards = () => {
   return (
     <div className={Style.AchievementsContainer}>
       <div className={Style.AchievementsHead}>Our Achievements</div>
-      <div className={Style.AchievementsCards}>{AchievementsCard}</div>
+      <div className={Style.AchievementsCards}>
+        {AchievementsList.map((obj, index) => (
+          <div
+            key={index}
+            className={`${Style.AchievementsCard} ${
+              index % 2 === 0 ? Style.leftAligned : Style.rightAligned
+            }`}
+          >
+            <div className={Style.leftOfAchievementCard}>
+              <h2 className={Style.tag}>{obj.category.tag}</h2>
+              <h2 className={Style.date}>{obj.date}</h2>
+            </div>
+            <div className={Style.rightOfAchievementCard}>
+              <div className={Style.details}>
+                <h1 className={Style.name}>{obj.name}</h1>
+                <p className={Style.description}>{obj.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
