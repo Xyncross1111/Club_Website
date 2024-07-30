@@ -21,13 +21,13 @@ const Carousel = () => {
         <div className={styles.toptext}>Our Happy Family</div>
           <Slider {...settings} className={styles.imgContainer}>
             <div className={styles.img1}>
-              <h3>ndfdjfdfnd fdfkndf ndf df dfd fd fdfdnf dnd fdf </h3>
+              <h3></h3>
             </div>
             <div className={styles.img1}>
-            <h3>ndfdjfdfnd fdfkndf ndf df dfd fd fdfdnf dnd fdf </h3>
+            <h3></h3>
             </div>
             <div className={styles.img1}>
-            <h3>ndfdjfdfnd fdfkndf ndf df dfd fd fdfdnf dnd fdf </h3>
+            <h3></h3>
             </div>
           </Slider>
         </div>
