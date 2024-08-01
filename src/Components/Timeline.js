@@ -2,29 +2,32 @@
 import React from "react";
 import EventCard from "./EventCard";
 import styles from "../Stylesheets/meets.module.css";
-
+import fizzbuzz from "../Assets/Fizz-Buzz.jpg";
+import CodeDecode from "../Assets/Code-decode.png";
+import BreakTheCode from "../Assets/break-the-code .png";
+import HackSphere from "../Assets/HackSphere.png";
 const events = [
   {
-    image: "srcAssetsFizz-Buzz.jpg",
+    image: fizzbuzz,
     title: "Fizz-Buzz",
     description:
       "A buzzer round followed by a platform to pitch your innovative ideas",
     date: "24 FEB 2023",
   },
   {
-    image: "srcAssetsCode-decode.png",
+    image: CodeDecode,
     title: "Code Decode",
     description: "Bring out desired output from a buggy code",
     date: "13 MAY 2023",
   },
   {
-    image: "srcAssets\break-the-code .png",
+    image: BreakTheCode,
     title: "Break The Code 4.0",
     description: "description of the event",
     date: "26 NOV 2023",
   },
   {
-    image: "srcAssetsHackSphere.png",
+    image: HackSphere,
     title: "HackSphere",
     description: "An 8 hour long hackathon, first of it's kind in the college.",
     date: "16 JAN 2024",
