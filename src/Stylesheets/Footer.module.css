@@ -4,7 +4,7 @@
 }
 
 #footer{
-  height: 50vw;
+  height: 25vw;
   width: 100vw;
   background-color: #1A1E1E;
   opacity: 97%;
@@ -12,7 +12,7 @@
 }
 
 #footerContent{
-  height: 40vw;
+  height: 20vw;
   width: 100vw;
   background-color: #078888;
   position: absolute;
@@ -23,7 +23,7 @@
 
 #footerTitle{
   display: inline-block;
-  font-size:12vw;
+  font-size:8vw;
   font-family: 'Franklin Gothic Heavy', 'Arial Narrow', Arial, sans-serif;
 
   background: linear-gradient(to bottom, #078888 0%,#078888 50%, #1A1E1E 50%);
@@ -34,23 +34,21 @@
   transform: translateY(-50%);
 }
 
-
-
 #footerTag{
   color: white;
-  font-size: 4vw; 
+  font-size: 2vw; 
   margin-top: -6vw;
 }
 
 #footerInfo{
   color: white;
   font-size: 2.5vw;
-  margin-top: 6vw;
+  margin-top: 3vw;
   font-weight: 100;
 }
 
 #footerLine{
-  margin-top: 8vw;
+  margin-top: 2vw;
   color: white;
   font-size: 1vw;
   margin-left: 12vw;
