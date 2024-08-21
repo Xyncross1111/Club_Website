@@ -46,6 +46,7 @@ const NavBar = () => {
                         <li><Link to={"/achievements"}>Achievements</Link></li>
                         <li><Link to={"/events"}>Events</Link></li>
                         <li><Link to={"/resources"}> Resources </Link></li>
+                        <li><Link to={"/register"}> Register </Link></li>
                     </ul>
                 </nav>   
                 </MediaQuery>
