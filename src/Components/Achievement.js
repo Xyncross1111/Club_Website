@@ -1,88 +1,39 @@
-import React from "react";
-import Style from "../Stylesheets/Achievement.module.css";
-import AchievementsList from "../data/Achievements.json";
-// let AchievementsList = [
-//   {
-//     aname: "Tushar Pamnani",
-//     branch: "Computer Science and engineering [2026]",
-//     title: "Smart India Hackathon",
-//     img: "../Assets/tcblogo.jpg",
-//     description:
-//       "lorem epsum cortesdf dfbdf dfndf dfndf dnfdf ndf df  djsd hddf dfh",
-//   },
-//   {
-//     aname: "Tushar Pamnani",
-//     branch: "Computer Science and engineering [2026]",
-//     title: "Smart India Hackathon",
-//     img: "../Assets/tcblogo.jpg",
-//     description:
-//       "lorem epsum cortesdf dfbdf dfndf dfndf dnfdf ndf df  djsd hddf dfh",
-//   },
-//   {
-//     aname: "Tushar Pamnani",
-//     branch: "Computer Science and engineering [2026]",
-//     title: "Smart India Hackathon",
-//     img: "../Assets/tcblogo.jpg",
-//     description:
-//       "lorem epsum cortesdf dfbdf dfndf dfndf dnfdf ndf df  djsd hddf dfh",
-//   },
-//   {
-//     aname: "Tushar Pamnani",
-//     branch: "Computer Science and engineering [2026]",
-//     title: "Smart India Hackathon",
-//     img: "../Assets/tcblogo.jpg",
-//     description:
-//       "lorem epsum cortesdf dfbdf dfndf dfndf dnfdf ndf df  djsd hddf dfh",
-//   },
-//   {
-//     aname: "Tushar Pamnani",
-//     branch: "Computer Science and engineering [2026]",
-//     title: "Smart India Hackathon",
-//     img: "../Assets/tcblogo.jpg",
-//     description:
-//       "lorem epsum cortesdf dfbdf dfndf dfndf dnfdf ndf df  djsd hddf dfh",
-//   },
-// ];
+import React from 'react';
+import styles from '../Stylesheets/Achievement.module.css';
 
-let AchievementsCard = AchievementsList.map((obj) => {
+const Achievements = () => {
+  const certificates = [
+    {
+      img: require('../Assets/certificate.jpg'),
+      photo: require('../Assets/profile1.jpg'),
+    },
+    {
+      img: require('../Assets/certificate.jpg'),
+      photo: require('../Assets/profile1.jpg'),
+    },
+    {
+      img: require('../Assets/certificate.jpg'),
+      photo: require('../Assets/profile1.jpg'),
+    },
+  ];
+
   return (
-    <div className={Style.AchievementsCard}>
-      <div className={Style.leftOfAchievementCard}>
-        {/* <img src="hh" alt={"Image of " + obj.aname}></img> */}
-        <h2 className={Style.tag}>{obj.category.tag}</h2>
-        <h2 className={Style.date}>{obj.date}</h2>
-      </div>
-      <div className={Style.rightOfAchievementCard}>
-        {/* <h4>{obj.date}</h4> */}
-        <div className={Style.details}>
-          <h1 className={Style.name}>{obj.name}</h1>
-          <p className={Style.description}>{obj.description}</p>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Our Achievers</h2>
+      <div className={styles.achievers}>
+        <div className={styles.achieverBox}>Ayush Bhaiya</div>
+        <div className={styles.achieverBox} style={{ marginTop: '60vh'}}>
+          Nupur Didi
         </div>
+        <div className={styles.achieverBox}>XYZZZZZZZ</div>
       </div>
-    </div>
-  );
-});
-const AchievementsCards = () => {
-  return (
-    <div className={Style.AchievementsContainer}>
-      <div className={Style.AchievementsHead}>Our Achievements</div>
-      <div className={Style.AchievementsCards}>
-        {AchievementsList.map((obj, index) => (
-          <div
-            key={index}
-            className={`${Style.AchievementsCard} ${
-              index % 2 === 0 ? Style.leftAligned : Style.rightAligned
-            }`}
-          >
-            <div className={Style.leftOfAchievementCard}>
-              <h2 className={Style.tag}>{obj.category.tag}</h2>
-              <h2 className={Style.date}>{obj.date}</h2>
-            </div>
-            <div className={Style.rightOfAchievementCard}>
-              <div className={Style.details}>
-                <h1 className={Style.name}>{obj.name}</h1>
-                <p className={Style.description}>{obj.description}</p>
-              </div>
+      <h2 className={styles.title}>Our Achievements</h2>
+      <div className={styles.list}>
+        {certificates.map((cert, index) => (
+          <div key={index} className={styles.certificate}>
+            <img src={cert.img} alt={`Certificate ${index + 1}`} />
+            <div className={styles.profilePhoto}>
+              <img src={cert.photo} alt={`Profile ${index + 1}`} />
             </div>
           </div>
         ))}
@@ -91,4 +42,4 @@ const AchievementsCards = () => {
   );
 };
 
-export default AchievementsCards;
+export default Achievements;

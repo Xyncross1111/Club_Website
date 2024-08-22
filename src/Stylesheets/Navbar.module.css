@@ -1,59 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-.header {
-    height: 12vh;
-    width: 100%;
-    /* border: 2px solid white; */
+header {
+    height: 10vh;
+    width: 100vw;
     display: flex;
     align-items: center;
-}
-
-.headContent {
-    height: 85%;
-    width: 99%;
-    /* border: 2px solid white; */
-    background-color: var(--navbg);
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-radius: 40px;
-}
-
-.logoCont {
-    height: 70%;
-    width: 18%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 2px solid white; */
-
 }
 
 .logo {
-    height: 100%;
-    width: 100%;
+    width: 30vw;
     display: flex;
-    justify-content: center;
     align-items: center;
     column-gap: 7px;
     background: linear-gradient(270deg, #9BFFFF 9.26%, #3FFFFF 27.77%, #6BDBD8 48.19%, #2FBEBB 64.52%, #027498 83.12%, #036 100%);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 18px;
+    font-size: 1.5rem;
     font-weight: 600;
     font-family: 'Viga', sans-serif;
+    margin: 1rem;
 }
 
 .logo img {
     object-fit: contain;
-    height: 80%;
+    height: 8vh;
     aspect-ratio: 1;
 }
 
 nav {
-    width: 72%;
-    height: 70%;
+    width: 70vw;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -61,12 +38,10 @@ nav {
 }
 
 nav ul {
-    width: 60%;
-    height: 100%;
+    width: 70%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* column-gap: 10px; */
     list-style: none;
 }
 
@@ -98,19 +73,6 @@ a.active {
 }
 
 @media screen and (max-width: 1000px) {
-    .headContent {
-        position: absolute;
-        width: 100vw;
-        height: 63px;
-        left: -6px;
-        top: 0px;
-        border-radius: 0%;
-    }
-    
-    .logoCont{
-        width: 54%;
-    }
-
     .logo > img{
         position: absolute;
         width: 64px;
@@ -121,12 +83,24 @@ a.active {
     
     .img_text{
       margin-left: 5rem;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
     }
 
     .list{
         display: none;
     }
-    
-  }
+    .header {
+        height: 65px;
+    }
+}
+
+@media (max-width: 780px) {
+    .logo {
+        width: 50vw;
+    }
+    .img_text{
+        margin-left: 4rem;
+        font-size: 1.2rem;
+    }
+}
 
