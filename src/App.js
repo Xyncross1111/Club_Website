@@ -23,7 +23,7 @@ function App() {
           <Route element={<Achievement />} path="/achievements" />
           <Route element={<Aboutss />} path="/about" />
           <Route element={<Events />} path="/Events" />
-          <Route element={<Registration />} path="/Register" />
+          <Route element={<Registration />} path="/register" />
         </Routes>
         <Footer />
       </BrowserRouter>
