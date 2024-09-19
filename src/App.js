@@ -7,6 +7,7 @@ import Achievement from "./Pages/Achievement.js";
 import Resources from "./Pages/Resources.js";
 import Aboutss from "./Pages/Aboutpage.js";
 import Events from "./Pages/Events.js";
+import Registration from "./Pages/Registration.js";
 
 // import Resources from './Pages/Resources';
 // import Footer from './Components/Footer';
@@ -22,6 +23,7 @@ function App() {
           <Route element={<Achievement />} path="/achievements" />
           <Route element={<Aboutss />} path="/about" />
           <Route element={<Events />} path="/Events" />
+          <Route element={<Registration />} path="/register" />
         </Routes>
         <Footer />
       </BrowserRouter>
