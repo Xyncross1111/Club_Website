@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../Stylesheets/Registration.module.css";
-import upi from "D:/Repos/Webdev/tcb/Club_Website/src/Assets/UPI.jpg";
+import upi from "../Assets/UPI.jpg";
 
 const RegistrationForm = () => {
 
@@ -37,13 +37,6 @@ const RegistrationForm = () => {
         if (e.target.name === "next") setPage((prev) => prev + 1)
         else if (e.target.name === "prev") setPage((prev) => prev - 1)
     }
-
-    // const handleChange = (e) => {
-    //     setFormData((prev) => ({
-    //         ...prev,
-    //         [e.target.name]: e.target.value,
-    //     }));
-    // }
 
     const handleLeaderChange = (e) => {
         const { name, value } = e.target;
@@ -82,35 +75,11 @@ const RegistrationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
     }
-
-    // const postTeamData = async () => {
-    //     const scriptURL = 'https://script.google.com/macros/s/AKfycbwQvHCKqlUGn0A6O6W1yhlvLmvrb4Ey0cCMfEfTywFHey3-SLqQ6DYqP5D-8wRgMXS2/exec';
-
-    //     try {
-    //         const response = await fetch(scriptURL, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(teamData),
-    //             mode: 'no-cors'
-    //         });
-
-    //         const result = await response.text(); // You can parse JSON if you send it in the Apps Script
-    //         alert(result);
-    //     } catch (error) {
-    //         console.error('Error!', error);
-    //         alert('Error: Unable to send data to Google Sheets.');
-    //     }
-    // }
     
     return (
-        <div className={styles.timelineContainer}>
-            <h1>Registration Form</h1>
-            <p color="white">{JSON.stringify(teamData)}</p>
-            {page}
-            <form onSubmit={handleSubmit}>
-
+        <div className={styles.registrationContainer}>
+            <h1 className={styles.title}>Registration Form</h1>
+            <div className={styles.formContainer}>
                 {page === 0 && <TeamInfoForm handleChange={handleLeaderChange} />}
 
                 {page === 1 && <MemberInfoForm handleChange={handleMemberChange} />}
@@ -119,83 +88,117 @@ const RegistrationForm = () => {
 
                 {page === 4 && <PaymentInfoForm handleChange={handlePaymentChange} />}
 
-                <button name="prev" onClick={handleFormSwitch} disabled={page === 0}>Previous</button>
-                <button name="next" onClick={handleFormSwitch} disabled={page === 4} >Next</button>
+                <div className={styles.buttonGroup}>
+                    <button 
+                        className={styles.prevButton} 
+                        name="prev" 
+                        onClick={handleFormSwitch} 
+                        disabled={page === 0}>
+                        Previous
+                    </button>
 
-                <button type="submit" disabled={page !== 4} >Submit</button>
-            </form>
+                    <button 
+                        className={styles.nextButton} 
+                        name="next" 
+                        onClick={handleFormSwitch} 
+                        disabled={page === 4}>
+                        Next
+                    </button>
 
+                    <button 
+                        className={styles.submitButton} 
+                        type="submit" 
+                        disabled={page !== 4}>
+                        Submit
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
 
-// const PersonalInfoForm = ({ handleChange }) => {
-//     return (
-//         <div>
-//             <label>Name:  </label>
-//             <input type="text" placeholder="Name" name="name" onChange={handleChange} />
-
-//             <label>Email: </label>
-//             <input type="email" placeholder="Email" name="email" onChange={handleChange} />
-
-//             <label>Branch: </label>
-//             <input type="text" placeholder="Branch" name="branch" onChange={handleChange} />
-
-//             <label>Contact: </label>
-//             <input type="phone" placeholder="Contact" name="contact" onChange={handleChange} />
-
-//             <label>Year: </label>
-//             <input type="text" placeholder="Year" name="year" onChange={handleChange} />
-//         </div>
-//     )
-// }
-
-// add multiple team member option
 
 const TeamInfoForm = ({ handleChange }) => {
     return (
-        <div>
-            <label>Name:  </label>
-            <input type="text" placeholder="Team Name" name="teamName" onChange={handleChange} />
+        <div className={styles.teamInfoForm}>
+            <label className={styles.formLabel}>Team Name:</label>
+            <input 
+                type="text" 
+                placeholder="Team Name" 
+                name="teamName" 
+                onChange={handleChange} 
+                className={styles.formInput} 
+            />
 
-            <label>Leader Details</label>
+            <label className={styles.formLabel}>Leader Details</label>
+            <label className={styles.formLabel}>Name:</label>
+            <input 
+                type="text" 
+                placeholder="Leader Name" 
+                name="name" 
+                onChange={handleChange} 
+                className={styles.formInput} 
+            />
 
-            <label>Name:  </label>
-            <input type="text" placeholder="Name" name="name" onChange={handleChange} />
+            <label className={styles.formLabel}>Email:</label>
+            <input 
+                type="email" 
+                placeholder="Email" 
+                name="email" 
+                onChange={handleChange} 
+                className={styles.formInput} 
+            />
 
-            <label>Email: </label>
-            <input type="email" placeholder="Email" name="email" onChange={handleChange} />
-
-            <label>Contact: </label>
-            <input type="phone" placeholder="Contact" name="contact" onChange={handleChange} />
-
+            <label className={styles.formLabel}>Contact:</label>
+            <input 
+                type="phone" 
+                placeholder="Contact" 
+                name="contact" 
+                onChange={handleChange} 
+                className={styles.formInput} 
+            />
         </div>
     )
 }
 
 const MemberInfoForm = ({ handleChange }) => {
-
     return (
-        <div>
-            <label>Member Details</label>
-            <label>Name:  </label>
-            <input type="text" placeholder="Name" name="name" onChange={handleChange} />
+        <div className={styles.memberInfoForm}>
+            <label className={styles.formLabel}>Member Name:</label>
+            <input 
+                type="text" 
+                placeholder="Member Name" 
+                name="name" 
+                onChange={handleChange} 
+                className={styles.formInput} 
+            />
 
-            <label>Email: </label>
-            <input type="email" placeholder="Email" name="email" onChange={handleChange} />
-
+            <label className={styles.formLabel}>Member Email:</label>
+            <input 
+                type="email" 
+                placeholder="Member Email" 
+                name="email" 
+                onChange={handleChange} 
+                className={styles.formInput} 
+            />
         </div>
     )
 }
 
 const PaymentInfoForm = ({ handleChange }) => {
     return (
-        <div>
-            <label>Account Details:</label>
-            <img src={upi} alt="UPI QR Code" />
+        <div className={styles.paymentInfoForm}>
+            <label className={styles.formLabel}>Account Details:</label>
+            <img src={upi} alt="UPI QR Code" className={styles.upiImage} />
 
-            <label>Transaction ID: </label>
-            <input type="text" placeholder="Transaction ID" name="transactionId" onChange={handleChange} />
+            <label className={styles.formLabel}>Transaction ID:</label>
+            <input 
+                type="text" 
+                placeholder="Transaction ID" 
+                name="transactionId" 
+                onChange={handleChange} 
+                className={styles.formInput} 
+            />
         </div>
     )
 }
