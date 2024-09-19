@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../Stylesheets/Registration.module.css";
 import upi from "../Assets/UPI.jpg";
+
+const members = 3;
 
 const RegistrationForm = () => {
 
@@ -12,24 +14,29 @@ const RegistrationForm = () => {
             'contact': '',
             'year': ''
         },
-        'members': [
-            {
-                'name': '',
-                'email': ''
-            },
-            {
-                'name': '',
-                'email': ''
-            },
-            {
-                'name': '',
-                'email': ''
-            }
-        ],
+        'members': [],
         'payment': {
             'transactionId': ''
         }
     })
+
+    let memberlist = [];
+   useEffect( () => {
+
+    memberlist = [];
+
+    for(let i = 0; i < members; i++) {
+        memberlist.push({
+            'name' : '',
+            'email' :  ''
+        })
+    }
+
+    setTeamData(prev => ({
+        ...prev,
+        members : memberlist
+    }))
+   },[])
 
     const [page, setPage] = useState(0);
 
@@ -38,15 +45,24 @@ const RegistrationForm = () => {
         else if (e.target.name === "prev") setPage((prev) => prev - 1)
     }
 
-    const handleLeaderChange = (e) => {
+    const handleTeamChange = (e) => {
         const { name, value } = e.target;
-        setTeamData((prev) => ({
+
+        if(name == "teamName") {
+            setTeamData( (prev) => ({
+                ...prev,
+                [name]: value
+            }))
+        }
+
+        else setTeamData((prev) => ({
             ...prev,
             leader: {
                 ...prev.leader,
-                [name]: value,
+                [name]: value
             },
         }));
+
     }
 
     const handleMemberChange = (e) => {
@@ -80,13 +96,12 @@ const RegistrationForm = () => {
         <div className={styles.registrationContainer}>
             <h1 className={styles.title}>Registration Form</h1>
             <div className={styles.formContainer}>
-                {page === 0 && <TeamInfoForm handleChange={handleLeaderChange} />}
+                {page === 0 && <TeamInfoForm teamData={teamData} handleChange={handleTeamChange} />}
 
-                {page === 1 && <MemberInfoForm handleChange={handleMemberChange} />}
-                {page === 2 && <MemberInfoForm handleChange={handleMemberChange} />}
-                {page === 3 && <MemberInfoForm handleChange={handleMemberChange} />}
+                {page === 1 && <MemberInfoForm page={page} memberlist={teamData.members} handleChange={handleMemberChange} />}
+                {page === 2 && <MemberInfoForm page={page} memberlist={teamData.members} handleChange={handleMemberChange} />}
 
-                {page === 4 && <PaymentInfoForm handleChange={handlePaymentChange} />}
+                {page === members && <PaymentInfoForm payment={teamData.payment} handleChange={handlePaymentChange} />}
 
                 <div className={styles.buttonGroup}>
                     <button 
@@ -101,14 +116,14 @@ const RegistrationForm = () => {
                         className={styles.nextButton} 
                         name="next" 
                         onClick={handleFormSwitch} 
-                        disabled={page === 4}>
+                        disabled={page === members}>
                         Next
                     </button>
 
                     <button 
                         className={styles.submitButton} 
                         type="submit" 
-                        disabled={page !== 4}>
+                        disabled={page !== members}>
                         Submit
                     </button>
                 </div>
@@ -118,7 +133,7 @@ const RegistrationForm = () => {
 }
 
 
-const TeamInfoForm = ({ handleChange }) => {
+const TeamInfoForm = ({teamData, handleChange }) => {
     return (
         <div className={styles.teamInfoForm}>
             <label className={styles.formLabel}>Team Name:</label>
@@ -126,6 +141,7 @@ const TeamInfoForm = ({ handleChange }) => {
                 type="text" 
                 placeholder="Team Name" 
                 name="teamName" 
+                value={teamData.teamName}
                 onChange={handleChange} 
                 className={styles.formInput} 
             />
@@ -136,6 +152,7 @@ const TeamInfoForm = ({ handleChange }) => {
                 type="text" 
                 placeholder="Leader Name" 
                 name="name" 
+                value={teamData.leader.name}
                 onChange={handleChange} 
                 className={styles.formInput} 
             />
@@ -145,6 +162,7 @@ const TeamInfoForm = ({ handleChange }) => {
                 type="email" 
                 placeholder="Email" 
                 name="email" 
+                value={teamData.leader.email}
                 onChange={handleChange} 
                 className={styles.formInput} 
             />
@@ -154,6 +172,7 @@ const TeamInfoForm = ({ handleChange }) => {
                 type="phone" 
                 placeholder="Contact" 
                 name="contact" 
+                value={teamData.leader.contact}
                 onChange={handleChange} 
                 className={styles.formInput} 
             />
@@ -161,14 +180,16 @@ const TeamInfoForm = ({ handleChange }) => {
     )
 }
 
-const MemberInfoForm = ({ handleChange }) => {
+const MemberInfoForm = ({page, memberlist, handleChange }) => {
     return (
         <div className={styles.memberInfoForm}>
+            <label className={styles.formLabel}>Member {page} </label>
             <label className={styles.formLabel}>Member Name:</label>
             <input 
                 type="text" 
                 placeholder="Member Name" 
-                name="name" 
+                name="name"
+                value={memberlist[page-1].name}
                 onChange={handleChange} 
                 className={styles.formInput} 
             />
@@ -177,7 +198,8 @@ const MemberInfoForm = ({ handleChange }) => {
             <input 
                 type="email" 
                 placeholder="Member Email" 
-                name="email" 
+                name="email"
+                value={memberlist[page-1].email}
                 onChange={handleChange} 
                 className={styles.formInput} 
             />
@@ -185,7 +207,7 @@ const MemberInfoForm = ({ handleChange }) => {
     )
 }
 
-const PaymentInfoForm = ({ handleChange }) => {
+const PaymentInfoForm = ({payment, handleChange }) => {
     return (
         <div className={styles.paymentInfoForm}>
             <label className={styles.formLabel}>Account Details:</label>
@@ -195,7 +217,8 @@ const PaymentInfoForm = ({ handleChange }) => {
             <input 
                 type="text" 
                 placeholder="Transaction ID" 
-                name="transactionId" 
+                name="transactionId"
+                value={payment.transactionId}
                 onChange={handleChange} 
                 className={styles.formInput} 
             />
